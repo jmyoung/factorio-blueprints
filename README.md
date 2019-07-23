@@ -4,12 +4,16 @@ Contained in this repository is a set of blueprints and books for the constructi
 
 The repo here will be split into sections based on what the blueprints are for, and each directory will have in it a README which outlines any references for where the blueprint came from, and then a txt file for the blueprint itself.
 
+## Sections
+
 Section | Purpose
 --- | ---
-[earlygame](earlygame) | Early Game Blueprints, startup books etc
-[midgame](midgame) | Midgame production modules, not heavily beaconized
-[lategame](lategame) | Lategame production modules, usually heavily beaconized
-[onekspm](onekspm) | Blueprints for 1K SPM base design
-[defenses](defenses) | Defensive structures, walls, laser arrays and so-on
-[chunkalign](chunkalign) | Chunk-Aligned Structures and Templates
-[railways](railways) | Railroad systems and stations
+[bootstrap](bootstrap) | Early-game and scenario specific templates, for bootstrapping a base.
+[structure](structure) | City block templates, buses, balancers and other structural components.
+[defenses](defenses) | Defensive system templates, turret walls and so-on.
+[railways](railways) | Railway systems and stations
+[energy](energy) | Energy production systems, nuclear, steam and solar.
+[materials](materials) | Production templates for basic materials, refineries, smelters and non-circuit intermediate products.
+[circuits](circuits) | Production templates for circuit production.
+[science](science) | Science modules for general science production and research.
+[products](products) | End-product templates for ammo, malls and so-on.

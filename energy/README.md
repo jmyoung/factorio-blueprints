@@ -1,4 +1,4 @@
-# Late Game Modules (Beaconized)
+# Energy Production Systems
 
 ## Nuclear Processing and Power
 
