@@ -6,6 +6,7 @@ Filename | Source | Notes
 --- | --- | ---
 [elderaxes_rhd_103](elderaxes_rhd_103.txt) | [FactorioPrints](https://factorioprints.com/view/-LfpQ63zCDlI03H8sH8_) | RHD, Chunk Corner Aligned, 2-rail spacing, upgradable from 2 to 4 lanes.  Power poles come with R&G lines.
 [sparr_rhd_141](sparr_rhd_141.txt) | [FactorioPrints](https://factorioprints.com/view/-L9l4fVWpLLjU-2TetZD) | RHD, Chunk Corner Aligned, 2-rail spacing, 2 lanes.  Made for 1-4-1 trains.
+[haphollas_train_network](haphollas_train_network.txt) | [Nilaus](https://www.youtube.com/watch?v=v4VgZv35yUI&feature=youtu.be) | A logistics train network implemented in vanilla.
 
 ## Peregrinus' Modular Rail System v2 RHD
 
