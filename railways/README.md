@@ -4,13 +4,13 @@ Various railway systems.  I've generally only considered RHD systems here, and f
 
 Filename | Source | Notes
 --- | --- | ---
-[elderaxes_rhd_103](elderaxes_rhd_103.txt) | [FactorioPrints](https://factorioprints.com/view/-LfpQ63zCDlI03H8sH8_) | RHD, Chunk Corner Aligned, 2-rail spacing, upgradable from 2 to 4 lanes.  Power poles come with R&G lines.
-[sparr_rhd_141](sparr_rhd_141.txt) | [FactorioPrints](https://factorioprints.com/view/-L9l4fVWpLLjU-2TetZD) | RHD, Chunk Corner Aligned, 2-rail spacing, 2 lanes.  Made for 1-4-1 trains.
-[haphollas_train_network](haphollas_train_network.txt) | [Nilaus](https://www.youtube.com/watch?v=v4VgZv35yUI&feature=youtu.be) | A logistics train network implemented in vanilla.
+[elderaxes_rhd_103](elderaxes_rhd_103.txt) | [FactorioPrints](https://factorioprints.com/view/-LfpQ63zCDlI03H8sH8_) | RHD, Chunk Corner Aligned, 2-rail spacing, upgradable from 2 to 4 lanes.  Wired for R&G circuits.
+[sparr_rhd_141](sparr_rhd_141.txt) | [FactorioPrints](https://factorioprints.com/view/-L9l4fVWpLLjU-2TetZD) | RHD, Chunk Corner Aligned, 2-rail spacing, 2 lanes.  Made for 1-4-1 trains.  Has some pretty great stations.  *Not wired for R&G circuits*.
+[haphollas_train_network](haphollas_train_network.txt) | [Nilaus](https://www.youtube.com/watch?v=v4VgZv35yUI&feature=youtu.be) | A logistics train network implemented in vanilla.  Only includes stations BPs, not a full rail system.
 
 ## Peregrinus' Modular Rail System v2 RHD
 
-RHD, Not Chunk Aligned, 3-rail spacing.  Expandable from 2-4 lanes, and is otherwise quite complete.  Made for 3-6-3 trains or smaller (!).
+RHD, Not Chunk Aligned, 3-rail spacing.  Expandable from 2-4 lanes, and is otherwise quite complete.  Made for 3-6-3 trains or smaller.  Wired for R&G circuits.
 
 Filename | Source | Notes
 --- | --- | ---
@@ -21,7 +21,7 @@ Filename | Source | Notes
 
 ## Railworld Blueprint Set
 
-RHD, Not Chunk Aligned, 2-rail spacing, upgradable from 2 to 4 lanes.  Perfect for 1-4 trains.  Alignment is for exactly fitting a 1-4 train.
+RHD, Not Chunk Aligned, 2-rail spacing, upgradable from 2 to 4 lanes.  Perfect for 1-4 trains.  Includes station adapters and tails.  *Not R&G wired*.
 
 Filename | Source | Notes
 --- | --- | ---
