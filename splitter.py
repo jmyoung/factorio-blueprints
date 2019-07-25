@@ -6,6 +6,7 @@ import base64
 import zlib
 import json
 import argparse
+import sys
 
 # An encoded blob, may be either a book or a blueprint
 # You don't usually instantiate this.
@@ -15,31 +16,39 @@ class EncodedBlob:
         self.label = label
         self.version = 73018245120
         
-    # Decode a file, returning either a BlueprintBook or a Blueprint
+    # Decode a string and return the raw json blob
     @staticmethod
-    def decode_from_file(filename):
-        f = open(filename,"r")
-        blob = EncodedBlob.decode_from_string(f.read())
-        f.close()
-        return blob
-
-    # Decode a string
-    @staticmethod
-    def decode_from_string(content):
+    def decode_to_json(content):
         # All books/blueprints start with the character '0', which we will strip.
         # Base64 decode the resulting content
         # Decompress the stream, resulting in a JSON object
         encoded = content[1:]
         compressed = base64.b64decode(encoded)
         blob = json.loads(zlib.decompress(compressed))
-            
+        return blob
+
+    # Take a raw json blob and convert it into an object            
+    @staticmethod
+    def json_to_object(raw):
         # Return the right kind of new object.
-        if 'blueprint' in blob:
-            return Blueprint.from_json(blob)
-        elif 'blueprint_book' in blob:
-            return BlueprintBook.from_json(blob)
+        if 'blueprint' in raw:
+            return Blueprint.from_json(raw)
+        elif 'blueprint_book' in raw:
+            return BlueprintBook.from_json(raw)
+
+    @staticmethod
+    def decode(content):
+        return EncodedBlob.json_to_object(EncodedBlob.decode_to_json(content))
+
+    # Take a raw json blob and encode it into a blob
+    @staticmethod
+    def encode_blob(content):
+        b64 = base64.b64encode(zlib.compress(bytearray(json.dumps(content),'utf-8')))
+
+        # Append a "0" string and return it
+        return f'0{b64.decode("utf-8")}'
+
             
-        
 # A blueprint book, containing zero or more blueprints
 class BlueprintBook(EncodedBlob):
     def __init__(self, label="Blueprint Book"):
@@ -91,13 +100,9 @@ class BlueprintBook(EncodedBlob):
     def encode(self):
         # Get the JSON representation of this object
         output = self.to_json()
-        
-        # Compress the stream and base64 encode it
-        b64 = base64.b64encode(zlib.compress(bytearray(json.dumps(output),'utf-8')))
 
-        # Append a "0" string and return it
-        return f'0{b64.decode("utf-8")}'
-
+        # Encode it
+        return EncodedBlob.encode_blob(output)
 
 
 # A single blueprint
@@ -153,20 +158,25 @@ class Blueprint(EncodedBlob):
         # Get the JSON representation of this object
         output = self.to_json(self)
         
-        # Compress the stream and base64 encode it
-        b64 = base64.b64encode(zlib.compress(bytearray(json.dumps(output),'utf-8')))
-
-        # Append a "0" string and return it
-        return f'0{b64.decode("utf-8")}'
+        # Encode it
+        return EncodedBlob.encode_blob(output)
 
 # ----------------------------------------------
 
 if __name__ == "__main__":
-    #blob = EncodedBlob.decode_from_file("print.txt")
-    #print(blob)
-    #print(blob.encode())
-
+    
+    # Read in the original book
     content = open("book.txt","r").read()
-    blob = EncodedBlob.decode_from_string(content)
+    obj = EncodedBlob.decode(content)
+
+    # Re-encode that, and write it to stdout
+    blob2 = obj.encode()
+    sys.stdout.write(blob2)
+
+
+
+
+    
+
     
     
