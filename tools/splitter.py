@@ -1,12 +1,15 @@
 #
 # Reads in a blueprint book, and splits it into its component blueprints.
+# blueprintSchema.json taken from https://github.com/Teoxoy/factorio-blueprint-editor
 #
 
+import sys
+import argparse
 import base64
 import zlib
 import json
-import argparse
-import sys
+
+import jsonschema
 
 # An encoded blob, may be either a book or a blueprint
 # You don't usually instantiate this.
@@ -66,7 +69,7 @@ class BlueprintBook(EncodedBlob):
             inner = data['blueprint_book']
 
         # Create a new BlueprintBook object
-        book = BlueprintBook(inner['label'])
+        book = BlueprintBook(inner['label'] if 'label' in inner else 'Blueprint Book')
         book.version = inner['version']
         book.active_index = inner['active_index']
 
@@ -126,7 +129,7 @@ class Blueprint(EncodedBlob):
             inner = data['blueprint']
         
         # Create a new Blueprint object
-        bp = Blueprint(inner['label'])
+        bp = Blueprint(inner['label'] if 'label' in inner else 'Blueprint')
         bp.version = inner['version']
         bp.icons = inner['icons'] if 'icons' in inner else None
         bp.entities = inner['entities'] if 'entities' in inner else None
@@ -156,8 +159,8 @@ class Blueprint(EncodedBlob):
     # Encode this blueprint as a standalone, single blueprint blob
     def encode(self):
         # Get the JSON representation of this object
-        output = self.to_json(self)
-        
+        output = self.to_json()
+                
         # Encode it
         return EncodedBlob.encode_blob(output)
 
@@ -165,17 +168,44 @@ class Blueprint(EncodedBlob):
 
 if __name__ == "__main__":
     
-    # Read in the original book
-    content = open("book.txt","r").read()
-    obj = EncodedBlob.decode(content)
+    # Read in the wired book
+    wired = EncodedBlob.decode(open("wired.txt","r").read())
 
-    # Re-encode that, and write it to stdout
-    blob2 = obj.encode()
-    sys.stdout.write(blob2)
+    # Read in the nowires book
+    nowires = EncodedBlob.decode(open("nowires.txt","r").read())
+
+    # Read in a BP with just four electric poles in it
+    bp = EncodedBlob.decode('0eJydkcEKwjAQRP9lzqkY2yrm6G+ISFsXWUjTkqRiKf13kyrqRbTedpeZN7AzoNQdtZaNhxrAVWMc1H6A47MpdLz5viUosKcaAqao41byOSFNlbdcJW2jCaMAmxNdoeR4ECDj2TPdYR9NAm3jgq4xMSl4E5ktcoH+MQXoiW1wTIrlA9sfTVeXZGOUmEOX6Rz46k94HL6x03ns11t+gWexgKkv9VavwIWsmyybdCnzdC1zuRXQRUmhaOyeynG8AUTOrjE=')
+
+    
+    # For each pole, try and link it up with red/green wires
+    for entity in bp.entities:
+        # We only care about big electric poles
+        if entity['name'] != 'big-electric-pole':
+            continue
+
+        # If the pole has no connections...
+        if 'connections' not in entity:
+            # Add a connection for every pole
+            conns = {}
+            iter = 1
+            for targetpole in bp.entities:
+                if targetpole['name'] != 'big-electric-pole' or targetpole['entity_number'] == entity['entity_number']:
+                    continue
+                else:
+                    conns[str(iter)] = {"red": [{"entity_id": targetpole['entity_number']}], "green": [{"entity_id": targetpole['entity_number']}]}
+                    iter = iter+1
+            
+            # Insert that into the pole object
+            entity['connections'] = conns
+
+            # Remove the direction if it exists
+            if 'direction' in entity:
+                entity.pop('direction')
 
 
-
-
+    sys.stdout.write(bp.encode())
+    print("Done")
     
 
     
