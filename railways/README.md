@@ -28,3 +28,14 @@ Filename | Source | Notes
 [railworld_straight](railworld_straight.txt) | [Reddit](https://www.reddit.com/r/factorio/comments/8h29al/here_are_my_factorio_modular_railworld/) | This book is straight rail sections.
 [railworld_diagonal](railworld_diagonal.txt) | [Reddit](https://www.reddit.com/r/factorio/comments/8h29al/here_are_my_factorio_modular_railworld/) | This book is diagonal rail sections.
 [railworld_transition](railworld_transition.txt) | [Reddit](https://www.reddit.com/r/factorio/comments/8h29al/here_are_my_factorio_modular_railworld/) | This book is sections to merge straight and diagonal.
+
+## MRS Railway Set
+
+A modular railway system with diagonals, loops, curves, and depot entrances/exits.  Not chunk aligned.  *Not R&G wired*.
+
+Filename | Source | Notes
+--- | --- | ---
+[mrs_2_lane](mrs_2_lane.txt) | [Gist](https://gist.github.com/HactarCE/bc85d8c49d3e686d66d181d471cd50b1) | The two-lane rail system.
+[mrs_2_lane_single](mrs_2_lane_single.txt) | [Gist](https://gist.github.com/HactarCE/bc85d8c49d3e686d66d181d471cd50b1) | The 2-lane rail system, but only including a single rail.
+[mrs_4_lane](mrs_4_lane.txt) | [Gist](https://gist.github.com/HactarCE/bc85d8c49d3e686d66d181d471cd50b1) | The 4-lane rail system.
+[mrs_depots](mrs_depots.txt) | [Gist](https://gist.github.com/HactarCE/bc85d8c49d3e686d66d181d471cd50b1) | Depot entrances/exits and other components

@@ -4,6 +4,8 @@ Contained in this repository is a set of blueprints and books for the constructi
 
 The repo here will be split into sections based on what the blueprints are for, and each directory will have in it a README which outlines any references for where the blueprint came from, and then a txt file for the blueprint itself.
 
+**NOTE** It is assumed that these recipes will be for the current Experimental 0.17.x version of Factorio.
+
 ## Sections
 
 Section | Purpose
