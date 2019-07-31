@@ -31,7 +31,7 @@ Filename | Source | Notes
 
 ## MRS Railway Set
 
-A modular railway system with diagonals, loops, curves, and depot entrances/exits.  Not chunk aligned.  *Not R&G wired*.
+A modular railway system with diagonals, loops, curves, and depot entrances/exits.  3-rail spacing, Not chunk aligned.  *Not R&G wired*.
 
 Filename | Source | Notes
 --- | --- | ---
